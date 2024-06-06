@@ -26,6 +26,11 @@ jobs:
     - name: Zip the server application files
       run: zip -r server.zip .
 
+    - name: Print GitHub secrets
+      run: |
+        echo "Azure Web App Name: ${{ secrets.AZURE_WEBAPP_NAME }}"
+        echo "Azure Web App Publish Profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}"
+
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
